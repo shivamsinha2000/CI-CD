@@ -8,5 +8,5 @@ run_tests:
 
 build_image:
   script:
-    -docker build -t bakirova/demo:python-app-1.0 .
-    -docker push bakirova/demo:python-app-1.0
+    - docker build -t bakirova/demo:python-app-1.0 .
+    - docker push bakirova/demo:python-app-1.0
