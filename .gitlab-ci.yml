@@ -2,6 +2,10 @@ variables:
   IMAGE_NAME:  bakirova/demo
   IMAGE_TAG: python-app-1.0
 
+stages:
+  - test
+  - build
+
 run_tests:
   stage: test
   image: python:3.9-slim-buster
@@ -11,6 +15,7 @@ run_tests:
     - make test
 
 build_image:
+  stage: build
   image: docker:27.3.1-cli
   services:
     - docker:27.3.1-dind
