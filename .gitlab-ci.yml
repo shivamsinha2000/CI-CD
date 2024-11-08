@@ -1,3 +1,7 @@
+variables:
+  IMAGE_NAME:  bakirova/demo
+  IMAGE_TAG: python-app-1.0
+
 run_tests:
   stage: test
   image: python:3.9-slim-buster
@@ -7,6 +11,11 @@ run_tests:
     - make test
 
 build_image:
+  image: docker:27.3.1-cli
+  services:
+    - docker:27.3.1-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
   script:
-    - docker build -t bakirova/demo:python-app-1.0 .
-    - docker push bakirova/demo:python-app-1.0
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    - docker push $IMAGE_NAME:$IMAGE_TAG
