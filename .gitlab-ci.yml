@@ -30,6 +30,8 @@ build_image:
 
 deploy:
   stage: deploy
+  before_script:
+    - chmod 400 $SSH_KEY_DIGITAL_OCEAN
   script:
     -  ssh -o StrictHostKeyChecking=no -i $SSH_KEY_DIGITAL_OCEAN root@207.154.194.201 "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS && 
