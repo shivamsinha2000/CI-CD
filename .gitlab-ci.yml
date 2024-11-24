@@ -1,3 +1,6 @@
+variables:
+  IMAGE_NAME: suman1606/test_docker_repo
+  IMAGE_TAG: python-app-1.0
 run_tests:
   stage: test
   image: python:3.9-slim-buster
@@ -5,3 +8,10 @@ run_tests:
     - apt-get update && apt-get install make
   script:
     - make test
+
+build_image:
+  before_script:
+    - docker login -u $registry_user -P $registry_pass
+  script:
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG
+    - docker push $IMAGE_NAME:$IMAGE_TAG
