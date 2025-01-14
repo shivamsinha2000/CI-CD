@@ -53,8 +53,8 @@ undeploy:  ## 💀 Remove from Azure
 	az group delete -n $(AZURE_RES_GROUP) -o table --no-wait
 
 test: venv  ## 🎯 Unit tests for Flask app
-	call src/.venv/Scripts/activate /
-	&& pytest -v
+	src/.venv/Scripts/activate /
+	& pytest -v
 
 test-report: venv  ## 🎯 Unit tests for Flask app (with report output)
 	src/.venv/Scripts/activate /
