@@ -58,7 +58,7 @@ test: venv  ## 🎯 Unit tests for Flask app
 
 test-report: venv  ## 🎯 Unit tests for Flask app (with report output)
 	src/.venv/Scripts/activate /
-	&& pytest -v --junitxml=test-results.xml
+	& pytest -v --junitxml=test-results.xml
 
 test-api: .EXPORT_ALL_VARIABLES  ## 🚦 Run integration API tests, server must be running 
 	cd tests /
