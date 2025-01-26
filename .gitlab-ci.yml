@@ -1,5 +1,5 @@
 variables:
-  IMAGE_NAME: nanajanashia/demo-app
+  IMAGE_NAME: noam1023/cicd-demo-app
   IMAGE_TAG: python-app-1.0
 
 stages:
