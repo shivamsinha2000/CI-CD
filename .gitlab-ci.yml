@@ -34,6 +34,7 @@ build_image:
 deploy:
   stage: deploy
   before_script:
+    - echo $(md5sum $SSH_KEY)
     - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@$DO_PUB_IP "
