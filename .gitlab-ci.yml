@@ -34,10 +34,9 @@ build_image:
 deploy:
   stage: deploy
   before_script:
-    - echo $(md5sum $SSH_KEY)
     - chmod 400 $SSH_KEY
   script:
     - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@$DO_PUB_IP "
         docker login -u $REGISTRY_USER -p $REGISTRY_PASS &&
-        docker ps -aq | xargs docker stop | xargs docker rm &&
+        docker ps -aq | xargs -r docker stop | xargs -r docker rm &&
         docker run -d -p 5000:5000 $IMAGE_NAME:$IMAGE_TAG"
